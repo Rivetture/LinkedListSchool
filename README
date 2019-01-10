@@ -1,0 +1,47 @@
+=================================================
+    ========================================
+	              Linked List
+    ========================================
+=================================================
+
+For this assignment, you will learn three things:
+1. Separate compilation (using multiple text files to build a project using
+makefiles) Separating interface and implementation between a .h and .cc file
+2. Manually managing memory (and the problems it causes)
+3. How to code linked lists
+
+All the work you need to do is in list.cc. But in order to understand what
+they are and how they get called, you should look over the other files as
+well. Start with main.cc to see the main loop, and look at node.h to see what
+a properly ADT-ified linked list node looks like.
+
+To compile your project, you will type "make" now. (Not g++, clang++, or
+compile. "make".)
+
+The list class is an ADT-ified implementation that tracks things like the size
+of the list, where the start and end of the list is, and so forth. The actual
+data is held in Nodes, which is just an int and another pointer to a Node.
+
+To get full credit on this assignment (+1 letter grade per function
+implemented) write the following functions in list.cc:
+1. ~List: This is a *destructor* which is a function that gets called when a
+variable gets de-allocated. You must unallocate all of the Nodes that you
+new-ed here in the destructor. We will use valgrind to check for memory leaks.
+
+//The oldest Node inserted should be tail_ptr
+2. pop: This will delete the oldest Node in the list (at the tail) and return the data held in it.
+
+3. push: add a new node to the head of the list and update head
+
+4. search: returns true or false depending on if the integer is to be found in
+the list somewhere.
+
+5. remove: starting at the head, remove the first node that matches the
+integer passed in. Make sure you clean up the pointers so that you don't break
+the list when you do so. Make sure you deallocate the memory with delete so
+you don't have a memory leak. This is the only function that will be of any
+substantial size.
+
+Finally, when you think you're all done, type "make memcheck". This will tell
+you if your code is leaking memory or not. If it is, you will lose a letter
+grade even if everything else works right.
